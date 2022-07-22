@@ -12,9 +12,11 @@ COPY . .
 
 RUN go build -o admin .
 
+FROM scratch
+
 WORKDIR /dist
 
-RUN cp /data/omerDocker/golang/admin .
+COPY --from=0  /data/omerDocker/golang/admin .
 
 EXPOSE 8765
 
